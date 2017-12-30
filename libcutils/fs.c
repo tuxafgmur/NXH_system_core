@@ -66,13 +66,7 @@ static int fs_prepare_path_impl(const char* path, mode_t mode, uid_t uid, gid_t 
         goto fixup;
     } else {
         if (!owner_match) {
-            ALOGE("Expected path %s with owner %d:%d but found %d:%d",
-                    path, uid, gid, sb.st_uid, sb.st_gid);
             return -1;
-        } else {
-            ALOGW("Expected path %s with mode %o but found %o",
-                    path, mode, (sb.st_mode & ALL_PERMS));
-            return 0;
         }
     }
 
